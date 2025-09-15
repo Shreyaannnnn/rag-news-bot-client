@@ -2,6 +2,8 @@ import './App.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { io } from 'socket.io-client';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8080';
 
@@ -100,7 +102,13 @@ function App() {
       </div>
       <div className="messages">
         {messages.map((m, idx) => (
-          <div key={idx} className={`message ${m.role}`}>{m.content}</div>
+          <div key={idx} className={`message ${m.role}`}>
+            {m.role === 'assistant' ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.content}</ReactMarkdown>
+            ) : (
+              m.content
+            )}
+          </div>
         ))}
         <div ref={messagesEndRef} />
       </div>
