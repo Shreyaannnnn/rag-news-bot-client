@@ -22,6 +22,32 @@ code {
   box-sizing: border-box;
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  border-right: 1px solid #eaeaea;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; }
+.brand { font-weight: 600; }
+.new-chat { background: #1a73e8; color: #fff; border: none; border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+
+.session-list { overflow-y: auto; flex: 1; }
+.session-item { padding: 8px; border-radius: 8px; cursor: pointer; }
+.session-item.active, .session-item:hover { background: #f5f8ff; }
+.session-item .title { font-size: 14px; font-weight: 500; }
+.session-item .time { font-size: 11px; color: #6b7280; }
+
+.chat { display: flex; flex-direction: column; padding: 16px 24px; }
+
 .messages {
   flex: 1;
   overflow-y: auto;
