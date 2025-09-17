@@ -8,6 +8,18 @@ Config
 - Create `.env` with:
   REACT_APP_API_BASE=http://localhost:8080
 
+About the Code
+- src/App.js
+  - Initializes a session on load (POST /api/session)
+  - Fetches recent sessions (GET /api/session) and renders a sidebar
+  - Sends messages (POST /api/chat) and displays assistant responses (Markdown via react-markdown)
+  - Supports streaming tokens via Socket.io when available
+  - New Chat creates a fresh session without deleting previous ones
+  - Clicking a session loads its history (GET /api/session/:id/history)
+- src/index.css
+  - Provides a professional dark theme, improved layout, and styles
+  - Sidebar session list, message bubbles, inputs, and sources styling
+
 Features
 - Creates a session on load
 - Shows messages, sends questions
